@@ -25,20 +25,21 @@ function App() {
   return (
     <div className="container">
       <h1>🌦️ Weather App</h1>
+      <p>Get the state of the weather today!</p>
       <input
         type="text"
         placeholder="Enter city"
         value={city}
         onChange={(e) => setCity(e.target.value)}
       />
-      <button onClick={getWeather}>Get Weather</button>
+      <button onClick={getWeather}>See the Weather</button>
 
       {error && <p className="error">{error}</p>}
 
       {weather && (
         <div className="card">
           <h2>{weather.name}</h2>
-          <p>🌡️ {weather.main.temp}°C</p>
+          <p>Temperature! {weather.main.temp}°C</p>
           <p>☁️ {weather.weather[0].description}</p>
         </div>
       )}
