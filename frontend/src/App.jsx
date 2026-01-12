@@ -21,36 +21,6 @@ function App() {
       setError("Server error");
     }
   };
-  const getWeather = async () => {
-    if (!city) return;
-
-    try {
-      const res = await fetch(`http://localhost:5000/weather?city=${city}`);
-      const data = await res.json();
-
-      if (data.error) {
-        setError(data.error);
-        setWeather(null);
-        setForecast([]);
-        return;
-      }
-
-      setWeather(data);
-      setError("");
-
-      // ✅ ONLY fetch forecast if city exists
-      const forecastRes = await fetch(
-        `http://localhost:5000/forecast?city=${city}`
-      );
-      const forecastData = await forecastRes.json();
-
-      if (!forecastData.error) {
-        setForecast(forecastData.list.filter((_, i) => i % 8 === 0));
-      }
-    } catch {
-      setError("Server error");
-    }
-  };
 
   const [dark, setDark] = useState(false);
 
