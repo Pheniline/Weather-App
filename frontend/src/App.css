@@ -29,3 +29,12 @@ button {
 .error {
   color: red;
 }
+.dark {
+  background: #0f172a;
+  color: white;
+  min-height: 100vh;
+}
+
+.dark .card {
+  background: #1e293b;
+}

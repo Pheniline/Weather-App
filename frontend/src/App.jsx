@@ -21,28 +21,34 @@ function App() {
       setError("Server error");
     }
   };
+  const [dark, setDark] = useState(false);
 
   return (
-    <div className="container">
-      <h1>🌦️ Weather App</h1>
-      <p>Get the state of the weather today!</p>
-      <input
-        type="text"
-        placeholder="Enter city"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-      />
-      <button onClick={getWeather}>See the Weather</button>
+    <div className={dark ? "container dark" : "container"}>
+      <button onClick={() => setDark(!dark)}>
+        {dark ? "☀️ Light Mode" : "🌙 Dark Mode"}
+      </button>
+      <div className="container">
+        <h1>🌦️ Weather App</h1>
+        <p>Get the state of the weather today!</p>
+        <input
+          type="text"
+          placeholder="Enter city"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+        <button onClick={getWeather}>See the Weather</button>
 
-      {error && <p className="error">{error}</p>}
+        {error && <p className="error">{error}</p>}
 
-      {weather && (
-        <div className="card">
-          <h2>{weather.name}</h2>
-          <p>Temperature! {weather.main.temp}°C</p>
-          <p>☁️ {weather.weather[0].description}</p>
-        </div>
-      )}
+        {weather && (
+          <div className="card">
+            <h2>{weather.name}</h2>
+            <p>Temperature! {weather.main.temp}°C</p>
+            <p>☁️ {weather.weather[0].description}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
